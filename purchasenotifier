@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using StoreSystem.Models;
+
+namespace StoreSystem.Services
+{
+    public class PurchaseNotifier
+    {
+        public delegate void PurchaseHandler(string message);
+        public event PurchaseHandler OnPurchased;
+
+        public void PurchaseItem(Product p)
+        {
+            Console.WriteLine($"Processing purchase for: {p.Name}");
+            OnPurchased?.Invoke($"{p.Name} has been purchased!");
+        }
+    }
+}
