@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace StoreSystem.Utils
+{
+    public class ProductCounter
+    {
+        public static int TotalProducts { get; private set; } = 0;
+
+        public ProductCounter()
+        {
+            TotalProducts++;
+        }
+    }
+}
