@@ -1,0 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using StoreSystem.Models;
+using System.Collections.Generic;
+
+public class Store
+{
+    private List<Product> products = new List<Product>();
+
+    public void AddProduct(Product product) => products.Add(product);
+
+    public void ShowAllProducts()
+    {
+        foreach (var p in products)
+        {
+            p.DisplayInfo();
+        }
+    }
+}
