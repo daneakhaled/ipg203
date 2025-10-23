@@ -1,0 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using StoreSystem.Models;
+using StoreSystem.Services;
+using StoreSystem.Utils;
+
+class Program
+{
+    static void Main()
+    {
+        Store store = new Store();
+
+        Electronics e1 = new Electronics("E1", "Laptop", 1200, "Dell");
+        Clothes c1 = new Clothes("C1", "T-Shirt", 25, "M");
+        Food f1 = new Food("F1", "Milk", 2.5m, DateTime.Now.AddDays(7));
+
+        store.AddProduct(e1);
+        store.AddProduct(c1);
+        store.AddProduct(f1);
+
+        store.ShowAllProducts();
+
+        Console.WriteLine(Validator.ValidateName("Hello") ? "Valid Name" : "Invalid Name");
+
+        PurchaseNotifier notifier = new PurchaseNotifier();
+        notifier.OnPurchased += (msg) => Console.WriteLine($"Event: {msg}");
+        notifier.PurchaseItem(e1);
+
+        ProductCounter pc1 = new ProductCounter();
+        ProductCounter pc2 = new ProductCounter();
+        Console.WriteLine($"Total Products Counted: {ProductCounter.TotalProducts}");
+    }
+}
